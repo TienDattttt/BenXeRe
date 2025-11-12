@@ -1,0 +1,20 @@
+package com.backend.benxere.dto.response;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Map;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class ChatbotResponse {
+    private String intent;
+    private Map<String, String> entities;
+    private String message;
+    private Object data;
+    private String originalText;
+}
