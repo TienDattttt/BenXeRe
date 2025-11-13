@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  button {
+    @apply transition-colors duration-300 transform hover:scale-105;
+  }
+
+  .grid-layout {
+    @apply grid gap-4;
+  }
+
+  @media (min-width: 768px) {
+    .grid-layout {
+      @apply grid-cols-4;
+    }
+  }
+
+  .sidebar-text {
+    @apply hidden;
+  }
+
+  .w-64 .sidebar-text {
+    @apply inline;
+  }
+
+  .w-20 .sidebar-text {
+    @apply hidden;
+  }
+
+  /* Modal styles */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-50 
+           flex items-center justify-center p-4;
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  .modal-content {
+    @apply bg-white rounded-lg shadow-xl 
+           w-[90%] sm:w-[400px] md:w-[450px] lg:w-[500px]
+           max-h-[80vh] 
+           transform scale-95 opacity-0;
+    animation: modalSlideUp 0.3s ease-out forwards;
+  }
+
+  /* Larger variant for specific modals that need more space */
+  .modal-content-large {
+    @apply sm:w-[500px] md:w-[600px] lg:w-[700px];
+  }
+
+  .modal-header {
+    @apply flex items-center justify-between p-3 border-b 
+           bg-gray-50/80 rounded-t-lg sticky top-0 z-10;
+  }
+
+  .modal-body {
+    @apply p-4 overflow-y-auto bg-white;
+    max-height: calc(80vh - 8rem); /* Header + Footer height */
+  }
+
+  .modal-footer {
+    @apply flex justify-end gap-2 p-3 border-t 
+           bg-gray-50/80 rounded-b-lg sticky bottom-0 z-10;
+  }
+
+  .modal-close-button {
+    @apply p-1.5 text-gray-500 rounded-full 
+           hover:bg-gray-200/80 transition-colors;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes modalSlideUp {
+    from {
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+}

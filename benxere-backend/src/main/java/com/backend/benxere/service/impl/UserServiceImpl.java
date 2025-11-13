@@ -68,6 +68,7 @@ public class UserServiceImpl implements UserService {
     public UserResponse updateMyInfo(UserUpdateRequest request) {
         User user = getCurrentUser();
         userMapper.updateUserFromDto(request, user);
+        user.setStatus("ACTIVE");
         return toResponse(userRepository.save(user));
     }
 
@@ -89,8 +90,27 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public UserResponse createUser(UserCreationRequest request) {
-        return toResponse(userRepository.save(userMapper.toUser(request)));
+
+        User user = userMapper.toUser(request);
+
+        // SET ROLE
+        if (request.getRoleId() == null) {
+            throw new AppException(ErrorCode.INVALID_REQUEST, "Role ID is required");
+        }
+
+        Role role = roleRepository.findById(request.getRoleId())
+                .orElseThrow(() -> new EntityNotFoundException("Role not found"));
+        user.setRole(role);
+
+        // Encode password
+        user.setPasswordHash(passwordEncoder.encode(request.getPassword()));
+
+        // Status default
+        if (user.getStatus() == null) user.setStatus("ACTIVE");
+
+        return toResponse(userRepository.save(user));
     }
+
 
     @Override
     @Transactional

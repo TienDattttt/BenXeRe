@@ -27,6 +27,8 @@ public interface UserMapper {
     @Mapping(target = "employer", ignore = true)
     @Mapping(target = "employees", ignore = true)
     @Mapping(target = "createdAt", expression = "java(getCurrentTimestamp())")
+
+    @Mapping(target = "status", expression = "java(\"ACTIVE\")")
     @Mapping(target = "workStartTime", expression = "java(toTime(request.getWorkStartTime()))")
     @Mapping(target = "workEndTime", expression = "java(toTime(request.getWorkEndTime()))")
     User toUser(UserCreationRequest request);
@@ -36,6 +38,7 @@ public interface UserMapper {
     @Mapping(target = "employer", ignore = true)
     @Mapping(target = "employees", ignore = true)
     @Mapping(target = "createdAt", expression = "java(getCurrentTimestamp())")
+    @Mapping(target = "status", constant = "ACTIVE")
     @Mapping(target = "workStartTime", expression = "java(toTime(request.getWorkStartTime()))")
     @Mapping(target = "workEndTime", expression = "java(toTime(request.getWorkEndTime()))")
     User toUser(EmployeeCreationRequest request);

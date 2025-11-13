@@ -2,6 +2,7 @@ package com.backend.benxere.dto.request;
 
 import java.time.LocalTime;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 
 
@@ -14,6 +15,10 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserCreationRequest {
+
+    @Email(message = "EMAIL_INVALID")
+    String email;
+
     @Size(min = 4, message = "USERNAME_INVALID")
     String username;
 
@@ -23,7 +28,10 @@ public class UserCreationRequest {
     String firstName;
     String lastName;
     String phoneNumber;
-    
+
+    Integer roleId;
+    String status;
+
     LocalTime workStartTime;
     LocalTime workEndTime;
 }

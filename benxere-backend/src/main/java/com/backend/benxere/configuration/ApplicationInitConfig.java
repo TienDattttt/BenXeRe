@@ -27,7 +27,7 @@ public class ApplicationInitConfig {
     PasswordEncoder passwordEncoder;
 
     @NonFinal
-    static final String ADMIN_USER_NAME = "admin";
+    static final String ADMIN_USER_NAME = "admin@gmail.com";
 
     @NonFinal
     static final String ADMIN_PASSWORD = "admin";
@@ -67,6 +67,7 @@ public class ApplicationInitConfig {
                         .phoneNumber("1234567890")
                         .passwordHash(passwordEncoder.encode(ADMIN_PASSWORD))
                         .createdAt(new Timestamp(System.currentTimeMillis()))
+                        .status("ACTIVE")
                         .role(adminRole)
                         .build();
                 userRepository.save(user);

@@ -1,0 +1,143 @@
+.animation-container {
+  @apply relative w-full h-[200px] overflow-hidden;
+  background: linear-gradient(to bottom, #87CEEB 0%, #B0E2FF 100%);
+}
+
+.road {
+  @apply absolute bottom-[20%] w-full;
+  height: 40px;
+  background: repeating-linear-gradient(
+    90deg,
+    #666 0px,
+    #666 50px,
+    #999 50px,
+    #999 100px
+  );
+  animation: moveRoad 1s linear infinite;
+}
+
+.road::after {
+  content: '';
+  @apply absolute top-0 w-full;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    #fff 0px,
+    #fff 30px,
+    transparent 30px,
+    transparent 60px
+  );
+}
+
+.bus {
+  @apply absolute bottom-[22%] left-0 text-5xl;
+  animation: moveBus 2s linear infinite, bounceBus 0.3s ease-in-out infinite;
+  transform: translateX(-100%) translateY(0);
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}
+
+.bus::after {
+  content: '💨';
+  @apply absolute text-2xl;
+  right: -20px;
+  bottom: 10px;
+  animation: fadeSmoke 0.5s linear infinite;
+  opacity: 0;
+}
+
+.cloud {
+  @apply absolute text-4xl text-white opacity-80;
+  animation: moveCloud 8s linear infinite;
+}
+
+.cloud:nth-child(2) {
+  animation-delay: -5s;
+  top: 20%;
+}
+
+.cloud:nth-child(3) {
+  animation-delay: -10s;
+  top: 10%;
+}
+
+.scenery > div {
+  @apply absolute bottom-[25%] text-3xl;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+}
+
+@keyframes moveRoad {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -100px 0;
+  }
+}
+
+@keyframes moveBus {
+  0% {
+    transform: translateX(-100%) translateY(0);
+  }
+  100% {
+    transform: translateX(100vw) translateY(0);
+  }
+}
+
+@keyframes bounceBus {
+
+  0%, 100% {
+    transform: translateY(0) translateX(var(--x-pos, 0));
+  }
+  50% {
+    transform: translateY(-5px) translateX(var(--x-pos, 0));
+  }
+}
+
+@keyframes moveCloud {
+  from {
+    transform: translateX(-100px);
+  }
+  to {
+    transform: translateX(calc(100vw + 100px));
+  }
+}
+
+@keyframes fadeSmoke {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-20px, -20px);
+  }
+}
+
+.tree {
+  animation: sway 1.2s ease-in-out infinite;
+}
+
+.house {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%, 100% {
+    transform: translateY(-50%) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-50%) rotate(1deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.02);
+  }
+}

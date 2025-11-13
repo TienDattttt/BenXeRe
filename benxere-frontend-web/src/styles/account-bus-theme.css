@@ -1,0 +1,271 @@
+/* Modern Glass Morphism Effects */
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.1),
+    0 2px 8px -1px rgba(0, 0, 0, 0.06),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 20px 40px -4px rgba(0, 0, 0, 0.1),
+    0 12px 20px -6px rgba(0, 0, 0, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+/* Advanced Gradients */
+.gradient-border {
+  position: relative;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(45deg, #00C6FF, #0072FF) border-box;
+  border: 2px solid transparent;
+  border-radius: 16px;
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #0072FF, #00C6FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+
+/* Smooth Scroll Behavior */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 114, 255, 0.5) transparent;
+}
+
+.smooth-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.smooth-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.smooth-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 114, 255, 0.5);
+  border-radius: 3px;
+}
+
+/* Advanced 3D Effects */
+.floating-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.floating-3d-child {
+  transform: translateZ(20px);
+  transition: all 0.3s ease;
+}
+
+.floating-3d:hover .floating-3d-child {
+  transform: translateZ(40px);
+}
+
+/* Advanced Loading Animations */
+@keyframes gradientSpin {
+  0% {
+    transform: rotate(0deg);
+    border-image: linear-gradient(45deg, #00C6FF, #0072FF) 1;
+  }
+  100% {
+    transform: rotate(360deg);
+    border-image: linear-gradient(225deg, #00C6FF, #0072FF) 1;
+  }
+}
+
+.gradient-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid transparent;
+  border-radius: 50%;
+  animation: gradientSpin 1.5s linear infinite;
+}
+
+/* Parallax Effect */
+.parallax-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.parallax-layer {
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Interactive Elements */
+.interactive-button {
+  position: relative;
+  background: linear-gradient(45deg, #0072FF, #00C6FF);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.interactive-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.interactive-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -10px rgba(0, 114, 255, 0.5);
+}
+
+.interactive-button:hover::before {
+  left: 100%;
+}
+
+/* Modern Form Elements */
+.modern-input {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.05),
+    inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.modern-input:focus {
+  border-color: #0072FF;
+  box-shadow: 
+    0 4px 8px rgba(0, 114, 255, 0.1),
+    inset 0 2px 4px rgba(0, 114, 255, 0.05);
+  transform: translateY(-1px);
+}
+
+/* Advanced Card Animations */
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.card-enter {
+  animation: cardEnter 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Status Indicators */
+.status-indicator {
+  position: relative;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.75rem;
+}
+
+.status-indicator::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(45deg, #00C6FF, #0072FF);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* Timeline Elements */
+.timeline-connector {
+  position: relative;
+}
+
+.timeline-connector::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(180deg, #00C6FF 0%, #0072FF 100%);
+  transform: translateX(-50%);
+}
+
+/* Wave Animation */
+@keyframes waveEffect {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.wave-background {
+  background: linear-gradient(-45deg, #E3F2FD, #BBDEFB, #90CAF9, #64B5F6);
+  background-size: 400% 400%;
+  animation: waveEffect 15s ease infinite;
+}
+
+/* Spotlight Effect */
+.spotlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.2) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.spotlight:hover::after {
+  opacity: 1;
+}

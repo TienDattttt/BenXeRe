@@ -220,6 +220,7 @@ public class AuthenticationService {
                 .passwordHash(passwordEncoder.encode(request.getPassword()))
                 .role(defaultRole)
                 .createdAt(new Timestamp(System.currentTimeMillis()))
+                .status("ACTIVE")
                 .build();
     
         System.out.println("User: " + user + ", First Name: " + user.getFirstName() + ", Last Name: " + user.getLastName() + ", Email: " + user.getEmail() + ", Phone: " + user.getPhoneNumber() + ", Password Hash: " + user.getPasswordHash() + ", Role ID: " + user.getRole().getId());

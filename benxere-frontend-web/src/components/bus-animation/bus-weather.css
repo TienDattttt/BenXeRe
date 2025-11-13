@@ -1,0 +1,236 @@
+.scene {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #1a1a1a 0%, #4a4a4a 100%);
+  transition: background 8s;
+}
+
+.road {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background: #333;
+}
+
+.road::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  bottom: 50%;
+  background: repeating-linear-gradient(
+    to right,
+    #fff 0%,
+    #fff 50px,
+    transparent 50px,
+    transparent 100px
+  );
+  animation: moveRoad 1s linear infinite;
+}
+
+.bus {
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  width: 120px;
+  height: 70px;
+  background: #e74c3c;
+  border-radius: 10px;
+  animation: bounce 1s infinite;
+}
+
+.bus::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+}
+
+.wheel {
+  position: absolute;
+  bottom: -10px;
+  width: 30px;
+  height: 30px;
+  background: #333;
+  border-radius: 50%;
+  border: 4px solid #666;
+  animation: rotate 1s linear infinite;
+}
+
+.wheel.front {
+  left: 85px;
+}
+
+.wheel.back {
+  left: 15px;
+}
+
+.building {
+  position: absolute;
+  bottom: 60px;
+  width: 80px;
+  height: 160px;
+  background: #2c3e50;
+}
+
+.building::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 10%,
+    rgba(255, 255, 255, 0.1) 10%,
+    rgba(255, 255, 255, 0.1) 12%
+  );
+}
+
+.buildings-left {
+  position: absolute;
+  left: 0;
+  bottom: 60px;
+  width: 40%;
+  height: 180px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.buildings-right {
+  position: absolute;
+  right: 0;
+  bottom: 60px;
+  width: 40%;
+  height: 180px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.tree {
+  position: absolute;
+  bottom: 60px;
+  width: 40px;
+  height: 80px;
+}
+
+.tree::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 45%;
+  width: 4px;
+  height: 30px;
+  background: #4a3728;
+}
+
+.tree::after {
+  content: '';
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  width: 100%;
+  height: 55px;
+  background: #2ecc71;
+  border-radius: 50% 50% 20% 20%;
+}
+
+.rain {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 97%,
+    #fff 97%,
+    #fff 100%
+  );
+  background-size: 5px 10px;
+  animation: rain 0.3s linear infinite;
+  opacity: 0.7;
+}
+
+.sun {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  width: 80px;
+  height: 80px;
+  background: #f1c40f;
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 60px #f1c40f;
+  animation: showSun 8s forwards;
+}
+
+@keyframes moveRoad {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rain {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 10px;
+  }
+}
+
+@keyframes showSun {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.scene.sunny {
+  background: linear-gradient(to bottom, #87CEEB 0%, #4a90e2 100%);
+  transition: background 8s;
+}
+
+.rain.clearing {
+  animation: clearRain 4s forwards;
+}
+
+@keyframes clearRain {
+  from {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 0;
+  }
+}

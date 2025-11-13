@@ -1,0 +1,418 @@
+/* Scene setup */
+.bus-scene {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  transition: background 3s ease-in-out;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Day/night cycle */
+.day {
+  background: linear-gradient(to bottom, #87CEEB 0%, #1E90FF 100%);
+}
+
+.night {
+  background: linear-gradient(to bottom, #0D1B2A 0%, #1B263B 100%);
+}
+
+/* Stars */
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+
+.night .stars {
+  opacity: 1;
+}
+
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+}
+
+/* Mountains and landscape */
+.mountains {
+  position: absolute;
+  bottom: 50px;
+  width: 200%;
+  height: 60px;
+  z-index: 2;
+}
+
+.mountain {
+  position: absolute;
+  bottom: 0;
+  border-radius: 50%;
+  background: linear-gradient(to top, #4b6043 0%, #7d9d6f 80%, #a1bb97 100%);
+}
+
+.night .mountain {
+  background: linear-gradient(to top, #2b3a28 0%, #3d4e37 80%, #505e47 100%);
+}
+
+.trees-container {
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+  z-index: 3;
+}
+
+.tree {
+  position: absolute;
+  bottom: 0;
+}
+
+.tree-trunk {
+  width: 6px;
+  height: 15px;
+  background: #5e3b15;
+  margin: 0 auto;
+}
+
+.tree-top {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 30px solid #2e5b1f;
+  margin: -25px auto 0;
+  transition: border-bottom-color 3s ease-in-out;
+}
+
+.night .tree-top {
+  border-bottom-color: #1a3311;
+}
+
+/* Clouds styling */
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 4;
+  transition: opacity 3s ease-in-out;
+}
+
+.night .clouds {
+  opacity: 0.5;
+}
+
+.cloud {
+  position: absolute;
+  top: 10px;
+  width: 60px;
+  height: 20px;
+  background-color: white;
+  border-radius: 20px;
+  opacity: 0.9;
+  transition: background-color 3s ease-in-out;
+}
+
+.night .cloud {
+  background-color: #555;
+}
+
+.cloud:before, .cloud:after {
+  content: '';
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  transition: background-color 3s ease-in-out;
+}
+
+.night .cloud:before, .night .cloud:after {
+  background-color: #555;
+}
+
+.cloud:before {
+  width: 25px;
+  height: 25px;
+  top: -10px;
+  left: 10px;
+}
+
+.cloud:after {
+  width: 30px;
+  height: 30px;
+  top: -15px;
+  right: 10px;
+}
+
+/* Road styling */
+.road {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #333;
+  z-index: 5;
+}
+
+.road-lines {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #FFF 0%, #FFF 50%, transparent 50%, transparent 100%);
+  background-size: 30px 100%;
+  transform: translateY(-50%);
+  animation: moveLines 0.5s linear infinite;
+}
+
+@keyframes moveLines {
+  0% { background-position: 30px 0; }
+  100% { background-position: 0 0; }
+}
+
+/* Traffic signs */
+.traffic-sign {
+  position: absolute;
+  bottom: 50px;
+  width: 10px;
+  height: 30px;
+  z-index: 6;
+}
+
+.sign-post {
+  width: 4px;
+  height: 30px;
+  background: #777;
+  margin: 0 auto;
+}
+
+.sign-top {
+  width: 20px;
+  height: 15px;
+  background: #f00;
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Weather effects container */
+.weather-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 8;
+}
+
+/* Rain effect */
+.rain-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+
+.weather-rain .rain-container {
+  opacity: 1;
+}
+
+.rain-drop {
+  position: absolute;
+  width: 2px;
+  height: 10px;
+  background: rgba(174, 194, 224, 0.6);
+  border-radius: 0 0 5px 5px;
+}
+
+/* Bus styling */
+.bus-container {
+  position: absolute;
+  bottom: 38px;
+  left: 0;
+  z-index: 10;
+}
+
+.bus {
+  position: relative;
+  width: 120px;
+  height: 50px;
+}
+
+.bus-body {
+  width: 100px;
+  height: 40px;
+  background: linear-gradient(to bottom, #ff6b6b 0%, #c44d4d 100%);
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.bus-front {
+  position: absolute;
+  width: 20px;
+  height: 35px;
+  background: linear-gradient(to bottom, #ff6b6b 0%, #c44d4d 100%);
+  right: -18px;
+  bottom: 0;
+  border-radius: 0 8px 0 0;
+}
+
+.headlight {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: yellow;
+  border-radius: 50%;
+  right: -15px;
+  bottom: 7px;
+  transition: box-shadow 3s ease-in-out;
+}
+
+.day .headlight {
+  box-shadow: 0 0 5px 2px rgba(255, 255, 0, 0.3);
+}
+
+.night .headlight {
+  box-shadow: 0 0 10px 5px rgba(255, 255, 0, 0.7);
+}
+
+.taillight {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #ff0000;
+  border-radius: 50%;
+  left: 3px;
+  bottom: 7px;
+  transition: box-shadow 3s ease-in-out;
+}
+
+.night .taillight {
+  box-shadow: 0 0 5px 2px rgba(255, 0, 0, 0.5);
+}
+
+.windows {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px 10px;
+}
+
+.window {
+  width: 18px;
+  height: 15px;
+  background: rgba(173, 216, 230, 0.8);
+  border-radius: 3px 3px 0 0;
+  position: relative;
+  overflow: hidden;
+  transition: background 3s ease-in-out;
+}
+
+.night .window {
+  background: rgba(255, 255, 150, 0.8);
+}
+
+.passenger {
+  position: absolute;
+  bottom: 0;
+  left: 5px;
+  width: 8px;
+  height: 8px;
+  background: #333;
+  border-radius: 50% 50% 0 0;
+}
+
+.wheel {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #333;
+  border-radius: 50%;
+  bottom: -7px;
+  border: 2px solid #111;
+  box-sizing: border-box;
+}
+
+.wheel:after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #666;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.front-wheel {
+  right: 15px;
+}
+
+.back-wheel {
+  left: 15px;
+}
+
+/* Smoke effect */
+.smoke-container {
+  position: absolute;
+  bottom: 5px;
+  left: -5px;
+}
+
+.smoke-particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: rgba(200, 200, 200, 0.7);
+  border-radius: 50%;
+}
+
+/* Sun and moon */
+.sun-moon {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  top: 20px;
+  right: 30px;
+  z-index: 2;
+  transition: background 3s ease-in-out, box-shadow 3s ease-in-out;
+}
+
+.sun {
+  background: #FFD700;
+  box-shadow: 0 0 20px 10px rgba(255, 215, 0, 0.7);
+}
+
+.moon {
+  background: #F4F4F4;
+  box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.4);
+}
+
+/* Scene transitions */
+.scene-transition {
+  animation: fadeEffect 0.5s ease-in-out;
+}
+
+@keyframes fadeEffect {
+  0% { opacity: 0.7; }
+  50% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
