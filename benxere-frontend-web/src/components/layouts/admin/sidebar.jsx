@@ -24,18 +24,18 @@ const menuCategories = [
   {
     title: "Cấu hình",
     items: [
-      { to: "/admin/seats", icon: <FaChair />, label: "Sơ đồ ghế" },
+      // { to: "/admin/seats", icon: <FaChair />, label: "Sơ đồ ghế" },
       { to: "/admin/coupons", icon: <FaTags />, label: "Mã giảm giá" },
-      { to: "/admin/flash-sales", icon: <FaBolt />, label: "Khuyến mãi" },
-      { to: "/admin/banners", icon: <FaImage />, label: "Hình ảnh" }
-    ]
-  },
-  {
-    title: "Chat",
-    items: [
-      { to: "/chat", icon: <FaComments />, label: "Chat" }
+      // { to: "/admin/flash-sales", icon: <FaBolt />, label: "Khuyến mãi" },
+      // { to: "/admin/banners", icon: <FaImage />, label: "Hình ảnh" }
     ]
   }
+  // {
+  //   title: "Chat",
+  //   items: [
+  //     { to: "/chat", icon: <FaComments />, label: "Chat" }
+  //   ]
+  // }
 ];
 
 const AdminSidebar = ({ collapsed, toggleCollapse }) => {
