@@ -19,6 +19,8 @@ const BusModal = lazy(() => import("../../components/bus-modal"));
 const Management = () => {  const [schedules, setSchedules] = useState([]);
   const [buses, setBuses] = useState([]);
   const [drivers, setDrivers] = useState([]);
+  const [secondDrivers, setSecondDrivers] = useState([]);
+
   const [assistants, setAssistants] = useState([]);
   const [isScheduleModalOpen, setIsScheduleModalOpen] = useState(false);
   const [isMultiScheduleModalOpen, setIsMultiScheduleModalOpen] = useState(false);
@@ -50,6 +52,7 @@ const Management = () => {  const [schedules, setSchedules] = useState([]);
         const busResponse = await getBusesByCurrentOwner();
         const employees = await getMyEmployeesByCurrentOwner();
         const drivers = employees.filter((emp) => emp.role === "DRIVER");
+        const secondDrivers = [...drivers];
         const assistants = employees.filter(
           (emp) => emp.role === "ASSISTANT_DRIVER"
         );
@@ -57,6 +60,7 @@ const Management = () => {  const [schedules, setSchedules] = useState([]);
         setBuses(busResponse || []);
         setDrivers(drivers || []);
         setAssistants(assistants || []);
+        setSecondDrivers(secondDrivers);
       } catch (error) {
         console.error(
           "Error fetching data:",
@@ -1039,7 +1043,7 @@ const Management = () => {  const [schedules, setSchedules] = useState([]);
               routes={[]}
               drivers={drivers}
               assistants={assistants}
-              secondDrivers={drivers}
+              secondDrivers={secondDrivers}
             />
           )}
         </Suspense>
